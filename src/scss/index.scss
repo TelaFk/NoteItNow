@@ -1,0 +1,234 @@
+@import "util";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: url(../images/back2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+//styling the Link Components
+.inside {
+  color: white;
+  text-decoration: none;
+}
+//styling the logo of the application
+#logo {
+  padding: 2rem 2.3rem;
+  letter-spacing: 0.2px;
+  font-size: 2.7rem;
+  font-size: clamp(1.5rem, 10vw, 2.7rem);
+  font-family: $logo-font;
+
+  .inside {
+    color: $purple1;
+  }
+
+  span {
+    color: white;
+  }
+}
+//styling the Homepage content
+#home-container {
+  min-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+
+  .home-text {
+    text-align: center;
+    color: white;
+    font-size: 4rem;
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+
+  .home-button {
+    padding: 0.6rem 1rem;
+    font-size: clamp(0.6rem, 10vw, 1.6rem);
+    background-color: $button-color;
+    border: none;
+    border-radius: 2rem;
+
+    &:hover {
+      background-color: rgba(190, 110, 190, 0.7);
+      @include transition;
+      @include transform(scale(0.95));
+    }
+  }
+}
+//styling the Mainpage content
+#container {
+  margin: 2rem 1rem;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  justify-content: space-around;
+
+  #new-note {
+    @extend %container;
+    background-color: rgba(94, 45, 94, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    span {
+      font-size: 9rem;
+      padding-top: 1rem;
+    }
+
+    h3 {
+      padding-top: 1rem;
+      font-size: 2rem;
+      font-size: clamp(1rem, 10vw, 2rem);
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(184, 98, 184, 0.541);
+    }
+  }
+  .note {
+    @extend %container;
+    position: relative;
+    background-color: $note-color;
+    color: white;
+    font-family: sans-serif;
+
+    .material-icons {
+      display: block;
+      text-align: end;
+      padding: 0.2rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    div {
+      min-height: 15rem;
+      max-height: 15rem;
+      h1 {
+        max-width: 90%;
+        margin: 0 0.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 2.4rem;
+        font-size: clamp(1.6rem, 10vw, 2.4rem);
+        color: rgb(165, 139, 165);
+      }
+
+      p {
+        max-height: 10rem;
+        margin: 1rem 0.5rem;
+        font-size: 1.1rem;
+        font-size: clamp(0.7rem, 10vw, 1.1rem);
+        line-height: 1.3rem;
+        overflow: hidden;
+      }
+    }
+
+    .date {
+      position: absolute;
+      bottom: 2%;
+      left: 2%;
+    }
+    &:hover {
+      @include transform(translateY(-0.7rem));
+      cursor: pointer;
+    }
+  }
+}
+
+//styling the Form/ViewNote page content
+.form {
+  margin: 1rem auto;
+  max-width: 50%;
+  min-height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $note-color;
+  border-radius: 1rem;
+
+  h2 {
+    max-width: 60%;
+    margin-top: 0.5rem;
+    color: white;
+    font-size: 2rem;
+    font-size: clamp(1.4rem, 10vw, 2rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .note-title {
+    border-radius: 1rem;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    @extend %form-field;
+  }
+
+  .note-content {
+    min-height: 12rem;
+    padding: 1rem;
+    @extend %form-field;
+  }
+
+  .note-buttons {
+    margin-top: 1rem;
+    min-width: 90%;
+    max-width: 90%;
+    display: flex;
+    justify-content: flex-end;
+
+    .green-button {
+      @extend %button;
+      background: green;
+      @include transition;
+      &:hover {
+        background: rgb(32, 143, 32);
+      }
+    }
+
+    .back-button {
+      @extend %button;
+      background: $button-color;
+      margin-right: 1rem;
+      &:hover {
+        background: rgb(129, 66, 129);
+      }
+    }
+  }
+}
+
+//MEDIA QUERIES
+@media (max-width: 420px) and (max-height: 950px) {
+  #home-container {
+    margin-top: 7rem;
+    .home-button {
+      font-size: 1.3rem;
+    }
+  }
+
+  #container {
+    grid-template-columns: 45% 45%;
+
+    #new-note {
+      span {
+        margin: 1.4rem;
+      }
+    }
+  }
+
+  .form {
+    margin: 4rem auto;
+    max-width: 85%;
+  }
+}

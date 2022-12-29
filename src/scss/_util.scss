@@ -1,0 +1,52 @@
+$purple1: rgb(110, 43, 110);
+$button-color: rgb(94, 45, 94);
+$note-color: rgba(168, 158, 158, 0.151);
+$logo-font: "Bebas Neue", cursive;
+$font2: "Berkshire Swash", cursive;
+
+@mixin transition {
+  -webkit-transition: all 50ms ease 0s;
+  -moz-transition: all 50ms ease 0s;
+  -o-transition: all 50ms ease 0s;
+}
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -moz-transform: $property;
+  -o-transform: $property;
+}
+
+%container {
+  min-height: 20rem;
+  max-height: 20rem;
+  max-width: 16rem;
+  margin-bottom: 2.5rem;
+}
+
+%form-field {
+  min-width: 90%;
+  max-width: 90%;
+  outline: none;
+  border: 1px solid $purple1;
+  background-color: rgb(37, 36, 36);
+  color: rgb(197, 196, 196);
+  font-size: 1.1rem;
+  font-family: sans-serif;
+  &:focus {
+    border: 1px solid rgb(145, 62, 113);
+  }
+}
+
+%button {
+  min-width: 5rem;
+  padding: clamp(0.4rem, 10vw, 0.7rem);
+  border: none;
+  border-radius: 0.7rem;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
